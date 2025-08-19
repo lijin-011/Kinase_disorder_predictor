@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="result-section fade-in">
+    <h2>Prediction Result</h2>
+    <div class="result-card" style="max-width:1400px;">
+        <!-- <div style="margin-bottom:1rem;">
+            <strong>Input Sequence:</strong>
+            <div class="mono" style="word-break:break-word;">{{ sequence }}</div>
+        </div> -->
+        {% set chunk_size = (results|length // 4) + (1 if results|length % 4 else 0) %}
+        <div class="result-grid">
+            {% for chunk in results|batch(chunk_size, fill_with=None) %}
+            <div class="result-card-table">
+                <table style="width:100%; border-collapse:collapse; margin-top:1rem; table-layout:fixed;">
+                    <thead>
+                        <tr style="background:#e0eafc;">
+                            <th style="padding:8px; border-bottom:1px solid #ccc;">Residue</th>
+                            <th style="padding:8px; border-bottom:1px solid #ccc;">Binary Prediction</th>
+                            <th style="padding:8px; border-bottom:1px solid #ccc;">Raw Probability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in chunk if row %}
+                        {% set residue, bin_pred, prob = row %}
+                        <tr>
+                            <td style="padding:4px 8px; text-align:center;">{{ residue }}</td>
+                            <td style="padding:4px 8px; text-align:center;">
+                                <span class="mono disorder">{{ bin_pred }}</span>
+                            </td>
+                            <td style="padding:4px 8px; text-align:center;">{{ "%.3f"|format(prob) }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <a href="{{ url_for('index') }}" class="btn-animated">Try Another Sequence</a>
+</section>
+{% endblock %}

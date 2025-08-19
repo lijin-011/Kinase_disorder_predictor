@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+    <h1 class="fade-in">Human Kinome Disorder Prediction</h1>
+    <p class="fade-in">Enter a protein sequence to predict disorder regions.</p>
+    <form action="{{ url_for('predict') }}" method="post" class="fade-in">
+        <input type="text" name="sequence" placeholder="Enter protein sequence..." required>
+        <button type="submit" class="btn-animated">Predict</button>
+    </form>
+</section>
+{% endblock %}

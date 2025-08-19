@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="error-section fade-in">
+    <h2>Error</h2>
+    <div class="error-card">
+        <p>{{ message }}</p>
+    </div>
+    <a href="{{ url_for('index') }}" class="btn-animated">Go Back</a>
+</section>
+{% endblock %}

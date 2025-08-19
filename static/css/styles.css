@@ -1,0 +1,291 @@
+/* Result grid for card-wise tables */
+.result-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.result-card-table {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px #6a11cb22;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    width: 25%;
+    max-width: 330px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media (max-width: 1200px) {
+    .result-card-table { width: 45%; }
+}
+@media (max-width: 700px) {
+    .result-card-table { width: 95%; }
+    .result-grid { gap: 1rem; }
+}
+/* Animated gradient background with blobs */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    color: #222;
+    background: linear-gradient(120deg, #220146 0%, #000000 100%);
+    position: relative;
+    overflow-x: hidden;
+    transition: background 0.5s;
+}
+
+/* Gradient blobs for animation */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.45;
+    filter: blur(40px);
+    animation: moveBlobs 18s infinite alternate;
+    z-index: 0;
+}
+.blob1 {
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle at 30% 30%, #ff6a00 0%, #ee0979 100%);
+    top: -120px;
+    left: -120px;
+    animation-delay: 0s;
+}
+.blob2 {
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle at 70% 70%, #43cea2 0%, #185a9d 100%);
+    bottom: -90px;
+    right: -90px;
+    animation-delay: 6s;
+}
+.blob3 {
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle at 50% 50%, #f7971e 0%, #ffd200 100%);
+    top: 60%;
+    left: 65%;
+    animation-delay: 12s;
+}
+
+@keyframes moveBlobs {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(40px) scale(1.1); }
+}
+
+/* Navigation styling */
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 96vw;
+    background: rgba(40, 60, 120, 0.25);
+    backdrop-filter: blur(16px);
+    padding: 0.7rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 24px #6a11cb22;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+    z-index: 100;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    margin: 0 auto;
+}
+nav .logo {
+    font-size: 2.1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #fff;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    text-shadow: 0 2px 12px #2575fc88;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 1.1rem;
+}
+nav ul li a:hover {
+    color: #ffd200;
+    text-shadow: 0 0 8px #ffd200;
+}
+
+/* Main content styling */
+main {
+    padding: 5.5rem 2rem 2rem 2rem; /* Add top padding for floating nav */
+table {
+    font-size: 0.92rem;
+    line-height: 1.1;
+}
+th, td {
+    font-size: 0.92rem;
+    padding: 3px 6px !important;
+}
+tr {
+    height: 20px !important;
+}
+    min-height: calc(100vh - 120px);
+    position: relative;
+    z-index: 1;
+}
+
+/* Sticky footer at bottom */
+footer {
+    width: 100%;
+    background: rgba(0,0,0,0.18);
+    color: #fff;
+        text-align: center;
+        padding: 0.7rem 0 0.7rem 0;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background: rgba(40, 60, 120, 0.18);
+        color: #fff;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        backdrop-filter: blur(10px);
+        z-index: 100;
+        border-radius: 16px 16px 0 0;
+        box-shadow: 0 -2px 16px #2575fc44;
+        margin: 0;
+        font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
+/* Other styles remain unchanged */
+.hero {
+    text-align: center;
+    padding: 5rem 2rem 2rem 2rem;
+    animation: fadeInUp 1s;
+}
+.hero h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 16px #2575fc88;
+}
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #f9f9f9;
+    text-shadow: 0 1px 8px #2575fc44;
+}
+form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+input[type="text"] {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #6a11cb;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.3s;
+    width: 300px;
+    max-width: 90vw;
+}
+input[type="text"]:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 8px #6a11cb44;
+}
+.btn-animated {
+    background: #6a11cb;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #6a11cb33;
+    transition: background 0.3s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+.btn-animated:hover {
+    background: #2575fc;
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px #2575fc44;
+}
+.result-section, .error-section {
+    max-width: 1500px; /* Even wider for 4 tables in a row */
+    margin: 3rem auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px #6a11cb22;
+    padding: 2rem;
+    text-align: center;
+}
+.result-card, .error-card {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #6a11cb11;
+    font-size: 1.1rem;
+    word-break: break-word;      /* Add this */
+    overflow-wrap: anywhere;     /* Add this */
+}
+.mono {
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    background: #e0eafc;
+    padding: 0.2em 0.5em;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+.disorder {
+    color: #ee0979;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s forwards;
+}
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@media (max-width: 700px) {
+    .hero {
+        padding: 2rem 1rem;
+    }
+    .result-section, .error-section {
+        padding: 1rem;
+        margin: 1rem;
+    }
+    nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+::-webkit-scrollbar {
+    width: 8px;
+    background: #e0eafc;
+}
+::-webkit-scrollbar-thumb {
+    background: #6a11cb;
+    border-radius: 8px;
+}
