@@ -27,5 +27,5 @@ def predict():
     except Exception as e:
         return render_template('error.html', message=str(e))
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# Vercel expects a variable named 'app' for the entry point
+# No need for 'if __name__ == "__main__"' block
